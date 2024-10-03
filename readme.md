@@ -514,6 +514,8 @@ Response:
 - **Upload the Image**: 
   After receiving the `uploadURL` from the above response, a `PUT` request should be made to upload the image to this URL. If the upload is successful, you will receive a status code `200`.
 
+- **Call Send Message API**: 
+  We can call send message API, with `contentType`: `FILE` or `IMAGE` .  And in `messageContent` we can pass `resourceUrl`
 
 ---
 
