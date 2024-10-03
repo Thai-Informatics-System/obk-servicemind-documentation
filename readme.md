@@ -466,6 +466,55 @@ Response:
 }
 ```
 
+### 5b. Send Message with Image/File Payload
+
+
+- **Description**: This API generates a pre-signed URL for uploading chat images to the server. The response provides the URL to upload the image and the public URL to access the image once it has been uploaded.
+
+#### Request
+
+- **URL**: `{{serverUrl}}/file-new/get-upload-url`
+- **Method**: `POST`
+- **Content-Type**: `application/json`
+
+#### Request Payload:
+
+```json
+{
+    "filename": "512x512.png",
+    "mimeType": "image/png",
+    "type": "chat-images"
+}
+```
+
+#### Response:
+
+```json
+{
+    "data": {
+        "uploadUrlData": {
+            "uploadURL": "https://obk-servicemind-uat-resources.s3.ap-southeast-1.amazonaws.com/chat-images/d9bcf98b-063f-4286-ae70-8862dc7ebc1d.png?Content-Type=image%2Fpng&...",
+            "fileName": "512x512.png",
+            "uploadPath": "/chat-images/d9bcf98b-063f-4286-ae70-8862dc7ebc1d.png",
+            "resourceUrl": "https://obk-servicemind-uat-resources.s3.ap-southeast-1.amazonaws.com/chat-images/d9bcf98b-063f-4286-ae70-8862dc7ebc1d.png"
+        }
+    },
+    "message": "Upload Url generated successfully!"
+}
+```
+
+- **Response Fields**:
+  - `uploadURL`: The pre-signed URL to upload the image to the server.
+  - `fileName`: The name of the file to be uploaded.
+  - `uploadPath`: The path where the file will be stored on the server.
+  - `resourceUrl`: The public URL to access the image once uploaded.
+
+#### Next Step:
+
+- **Upload the Image**: 
+  After receiving the `uploadURL` from the above response, a `PUT` request should be made to upload the image to this URL. If the upload is successful, you will receive a status code `200`.
+
+
 ---
 
 ### 6. Delete Sent Message
