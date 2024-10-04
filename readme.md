@@ -593,4 +593,102 @@ Response:
 
 ---
 
+## Socket Events
+
+After establishing a connection with the socket, the following events can be listened to for receiving updates on chat sessions and messages.
+
+### Event: `chat-session-update-${chatSessionId}`
+
+Triggered when there is an update in a chat session. The payload provides data about the chat session state and participant details.
+
+#### Payload Structure
+```typescript
+payload.chatSession : ChatSessionDataType
+
+interface ChatSessionDataType {
+    id: number,
+    chatInitiatedByEntityId: number,
+    chatInitiatedByEntityType: 'TENANT' | 'BACKEND_USER',
+    chatJoinedByEntityId: number,
+    chatJoinedByEntityType: 'TENANT' | 'BACKEND_USER',
+    chatSessionId: string,
+    isSessionClosed: boolean,
+    lastPingedByChatInitiator: number,
+    lastPingedByChatJoiner: number,
+    orgId: number
+}
+```
+
+| Field                   | Type                        | Description                                              |
+|-------------------------|-----------------------------|----------------------------------------------------------|
+| `id`                    | `number`                    | Unique identifier for the chat session.                  |
+| `chatInitiatedByEntityId` | `number`                | ID of the entity that initiated the chat.                |
+| `chatInitiatedByEntityType` | `'TENANT' \| 'BACKEND_USER'` | Type of entity that initiated the chat. |
+| `chatJoinedByEntityId`     | `number`                | ID of the entity that joined the chat.                   |
+| `chatJoinedByEntityType`   | `'TENANT' \| 'BACKEND_USER'` | Type of entity that joined the chat. |
+| `chatSessionId`         | `string`                    | Unique identifier for the chat session.                  |
+| `isSessionClosed`       | `boolean`                   | Status indicating if the session is closed.              |
+| `lastPingedByChatInitiator` | `number`              | Last ping timestamp by the chat initiator.               |
+| `lastPingedByChatJoiner`    | `number`              | Last ping timestamp by the chat joiner.                  |
+| `orgId`                 | `number`                    | Organization ID associated with the chat session.        |
+
+### Event: `chat-message-delete`
+
+Triggered when a chat message is deleted.
+
+#### Payload Structure
+```typescript
+payload?.messageId : number
+```
+
+| Field         | Type    | Description                    |
+|---------------|---------|--------------------------------|
+| `messageId`   | `number`| Identifier for the deleted message.|
+
+### Event: `chat-message-${chatSessionId}`
+
+Triggered when a new message is sent within a chat session.
+
+#### Payload Structure
+```typescript
+payload.chatMessage : ChatMessageDataType
+
+interface ChatMessageDataType {
+    id: number,
+    type: 1 | 2 | 3,
+    chatSessionId: string,
+    contentType: string,
+    deliveredAt: number,
+    messageContent: string,
+    metadata: any,
+    orgId: number,
+    seenAt: number | null,
+    senderEntityId: number,
+    senderEntityType: 'BACKEND_USER' | 'TENANT',
+    sentAt: number,
+    status: number,
+}
+```
+
+| Field                | Type                            | Description                                      |
+|----------------------|---------------------------------|--------------------------------------------------|
+| `id`                 | `number`                        | Unique identifier for the message.               |
+| `type`               | `1 \| 2 \| 3`                   | Type of the message.                             |
+| `chatSessionId`      | `string`                        | Chat session ID to which the message belongs.    |
+| `contentType`        | `string`                        | Content type (e.g., `TEXT`, `FILE`, `IMAGE`).    |
+| `deliveredAt`        | `number`                        | Timestamp when the message was delivered.        |
+| `messageContent`     | `string`                        | Content of the message.                          |
+| `metadata`           | `any`                           | Additional metadata associated with the message. |
+| `orgId`              | `number`                        | Organization ID related to the message.          |
+| `seenAt`             | `number \| null`                | Timestamp when the message was seen (or `null`). |
+| `senderEntityId`     | `number`                        | ID of the sender entity.                         |
+| `senderEntityType`   | `'BACKEND_USER' \| 'TENANT'`    | Type of the sender entity.                       |
+| `sentAt`             | `number`                        | Timestamp when the message was sent.             |
+| `status`             | `number`                        | Status of the message.                           |
+
+## Usage
+
+To use this socket, connect to the appropriate socket server and add listeners for the events listed above. Make sure to use `chatSessionId` as part of the event name for `chat-session-update` and `chat-message` events to listen to specific sessions.
+
+---
 
