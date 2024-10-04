@@ -197,7 +197,7 @@ Request Payload:
 Response:
 ```json
 {
-    "channel": "client/init-chat-with-concierge",
+    "channel": "client/get-chat-session",
     "status": 200,
     "body": {
         "chatSessionId": "4482e256-da14-47cc-b119-9575bbb3b6d3",
