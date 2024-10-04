@@ -531,7 +531,7 @@ Response:
     "data": {
         "route": "client/delete-message",
         "body": {
-            "chatSessionId": "318c7696-e88b-4cd3-86da-06a4abb50e99"
+            "messageId": 133
         }
     }
 }
