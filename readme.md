@@ -6,7 +6,7 @@ This document provides details on how to use the WebSocket API, including how to
 ## WebSocket API Base URL
 
 - **WebSocket API URL/ SocketOrigin**: 
-  wss://vqywy57hqe.execute-api.ap-southeast-1.amazonaws.com/uat
+  `wss://vqywy57hqe.execute-api.ap-southeast-1.amazonaws.com/uat`
 
 ---
 
