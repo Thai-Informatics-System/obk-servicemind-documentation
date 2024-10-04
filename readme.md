@@ -49,7 +49,7 @@ To establish a connection, use a WebSocket client (e.g., Postman, a browser, or 
 
 ---
 
-## Available WebSocket Events
+## Available WebSocket Events to Call 
 
 ### 1. Init Chat With Concierge
 
@@ -186,7 +186,7 @@ Request Payload:
 {
     "action": "api",
     "data": {
-        "route": "client/init-chat-with-concierge",
+        "route": "client/get-chat-session",
         "body": {
             "chatSessionId": "4482e256-da14-47cc-b119-9575bbb3b6d3"
         }
@@ -235,7 +235,7 @@ Response:
 }
 ```
 
-Step 2: Continue with Old Chat Session
+####  Step 2: If Session not closed, Continue with Old Chat Session
 
 Request Payload:
 ```json
@@ -593,7 +593,7 @@ Response:
 
 ---
 
-## Socket Events
+## Available WebSocket Events for Subscription 
 
 After establishing a connection with the socket, the following events can be listened to for receiving updates on chat sessions and messages.
 
@@ -634,7 +634,7 @@ interface ChatSessionDataType {
 
 ### Event: `chat-message-delete`
 
-Triggered when a chat message is deleted.
+Triggered when a chat message is unsent. 
 
 #### Payload Structure
 ```typescript
