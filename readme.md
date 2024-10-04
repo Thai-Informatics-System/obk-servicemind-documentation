@@ -5,7 +5,7 @@ This document provides details on how to use the WebSocket API, including how to
 
 ## WebSocket API Base URL
 
-- **WebSocket API URL**: 
+- **WebSocket API URL/ SocketOrigin**: 
   wss://vqywy57hqe.execute-api.ap-southeast-1.amazonaws.com/uat
 
 ---
@@ -23,7 +23,7 @@ Before connecting to the WebSocket API, ensure you have the following:
 
 To connect to the WebSocket API, the following URL needs to be called:
 
-{{socketOrigin}}?Auth={{accessToken}}&deviceId=123-postman-321
+`{{socketOrigin}}?Auth={{accessToken}}&deviceId=123-postman-321`
 
 ### Parameters:
 
