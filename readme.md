@@ -519,9 +519,9 @@ Response:
 
 ---
 
-### 6. Delete Sent Message
+### 6. UnSent Message
 
-- **Description**: This API allows the user to delete a previously sent message within a chat session. The deletion is based on the `chatSessionId` and the message ID.
+- **Description**: This API allows the user to unsent a previously sent message within a chat session. The deletion is based on the `chatSessionId` and the message ID.
 
 #### Request Payload:
 
