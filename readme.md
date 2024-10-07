@@ -550,7 +550,53 @@ Response:
 
 ---
 
-### 7. End Chat Session
+### 7. Mark Message As seen
+
+- **Description**: This API allows the tenant to mark any message as seen which has been sent by 'BACKEND_USER'.  Once the message is visible in viewport, app should call this api with latest `chatSessionId` and `messageId`
+
+#### Request Payload:
+
+```json
+{
+    "action": "api",
+    "data": {
+        "route": "client/update-message-seen-at",
+        "body": {
+            "messageId": 133,
+            "chatSessionId": "4482e256-da14-47cc-b119-9575bbb3b6d3"
+        }
+    }
+}
+```
+
+Response:
+```json
+{
+    "channel": "client/update-message-seen-at",
+    "status": 200,
+    "body": {
+        "chatSessionId": "35b4f23f-1cf7-4a8a-809f-7e20e8404ba8",
+        "chatMessage": {
+            "id": "268",
+            "orgId": "367",
+            "chatSessionId": "35b4f23f-1cf7-4a8a-809f-7e20e8404ba8",
+            "senderEntityType": "BACKEND_USER",
+            "senderEntityId": "32314",
+            "messageContent": "zXzX",
+            "sentAt": "1728290170951",
+            "status": 4,
+            "seenAt": "1728290232663",
+            "deliveredAt": "1728290170951",
+            "contentType": "TEXT",
+            "metadata": null
+        }
+    }
+}
+```
+
+---
+
+### 8. End Chat Session
 
 - **Description**: This API is used to end an active chat session between the tenant and the concierge. Once the session is closed, it cannot be reopened, and a new session must be started for further communication.
 
