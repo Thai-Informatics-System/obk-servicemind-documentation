@@ -435,7 +435,10 @@ Response:
         "body": {
            "chatSessionId": "4482e256-da14-47cc-b119-9575bbb3b6d3",
            "contentType": "TEXT",      // Can be TEXT, FILE, or IMAGE
-           "messageContent": "whatever messages needs to be sent"
+           "messageContent": "whatever messages needs to be sent",
+           "metdata": {
+              "any_non_mandatory_key": "any_value"
+            }
         }
     }
 }
@@ -460,7 +463,9 @@ Response:
             "seenAt": null,
             "deliveredAt": "1727942303646",
             "contentType": "TEXT",
-            "metadata": null
+            "metdata": {
+              "any_non_mandatory_key": "any_value"
+            }
         }
     }
 }
