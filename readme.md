@@ -597,7 +597,37 @@ Response:
 
 ---
 
-### 8. End Chat Session
+### 8. Get Unread Message Count
+
+- **Description**: This API get the total unread messages count for chat for tenant who has connected to the socket.
+
+#### Request Payload:
+
+```json
+{
+    "action": "api",
+    "data": {
+        "route": "client/get-unread-msg-count",
+        "body": {
+        }
+    }
+}
+```
+
+Response:
+```json
+{
+    "channel": "client/get-unread-msg-count",
+    "status": 200,
+    "body": {
+        "unreadMsgCount": "0"
+    }
+}
+```
+
+---
+
+### 9. End Chat Session
 
 - **Description**: This API is used to end an active chat session between the tenant and the concierge. Once the session is closed, it cannot be reopened, and a new session must be started for further communication.
 
