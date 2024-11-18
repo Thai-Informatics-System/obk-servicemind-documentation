@@ -437,6 +437,7 @@ Response:
            "contentType": "TEXT",      // Can be TEXT, FILE, or IMAGE
            "messageContent": "whatever messages needs to be sent",
            "metadata": {
+              "messageUid": "asaSasaSasA1321",    // This should random unique for each message, will be returned back in message metadata
               "any_non_mandatory_key": "any_value"
             }
         }
